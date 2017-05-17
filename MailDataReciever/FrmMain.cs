@@ -27,7 +27,7 @@ namespace MailDataReciever {
         }
 
         private void btnConnect_Click(object sender, EventArgs e) {
-            iSFtp = new SftpClient(txtMailDataServerIP.Text, Convert.ToInt32(numUpDownSFtpPort.Value), txtMailDataServerUsername.Text, txtMailDataServerPassword.Text);
+            iSFtp = new SftpClient(txtSFtpIP.Text, Convert.ToInt32(numUpDownSFtpPort.Value), txtSFtpUsername.Text, txtSFtpPassword.Text);
 
             try {
                 iSFtp.Connect();
@@ -174,8 +174,130 @@ namespace MailDataReciever {
         }
 
         private void FrmMain_Load(object sender, EventArgs e) {
-            FlashState();
+            //FlashState();
             txtFilePath.Text = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+
+            
+            bool ConfigExists = File.Exists("config.ini");
+            FileStream ConfigFile = new FileStream("config.ini", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+
+            if(!ConfigExists) {
+                string DefaultConfig =
+@"[SFTP]
+IP=
+Port=22
+Username=
+Password=
+
+[Database]
+IP=
+Port=3306
+Username=
+Password=
+
+[SSH Tunnel]
+Use=false
+IP=
+Port=22
+Username=
+Password= 
+";
+                ConfigFile.Position = 0;
+                ConfigFile.Write(Encoding.Default.GetBytes(DefaultConfig), 0, Encoding.Default.GetByteCount(DefaultConfig));
+                ConfigFile.Close();
+                FlashState();
+                return;
+            }
+
+            StreamReader fsReader = null;
+            try {
+                ConfigFile.Position = 0;
+                fsReader = new StreamReader(ConfigFile);
+
+                string StrBuffer;
+
+                while ((StrBuffer = fsReader.ReadLine()) != "[SFTP]");
+                // Read sftp server IP.
+                txtSFtpIP.Text = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(
+                        fsReader.ReadLine().Replace(" ", "").Replace("IP=", "")
+                    )
+                );
+                // Read sftp server port.
+                numUpDownSFtpPort.Value = Convert.ToDecimal(
+                    fsReader.ReadLine().Replace(" ", "").Replace("Port=", "")
+                );
+                // Read sftp server username.
+                txtSFtpUsername.Text = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(
+                        fsReader.ReadLine().Replace(" ", "").Replace("Username=", "")
+                    )
+                );
+                // Read sftp server password.
+                txtSFtpPassword.Text = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(
+                        fsReader.ReadLine().Replace(" ", "").Replace("Password=", "")
+                    )
+                );
+
+
+                while ((StrBuffer = fsReader.ReadLine()) != "[Database]");
+                // Read database IP.
+                txtDBIP.Text = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(
+                        fsReader.ReadLine().Replace(" ", "").Replace("IP=", "")
+                    )
+                );
+                // Read database port.
+                numUpDownDBPort.Value = Convert.ToDecimal(
+                    fsReader.ReadLine().Replace(" ", "").Replace("Port=", "")
+                );
+                // Read database username.
+                txtDBUsername.Text = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(
+                        fsReader.ReadLine().Replace(" ", "").Replace("Username=", "")
+                    )
+                );
+                // Read database password.
+                txtDBPassword.Text = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(
+                        fsReader.ReadLine().Replace(" ", "").Replace("Password=", "")
+                    )
+                );
+
+
+                while ((StrBuffer = fsReader.ReadLine()) != "[SSH Tunnel]");
+                // Read SSH Tunnel State.
+                checkBoxUseSSH.Checked = fsReader.ReadLine().Replace(" ", "").Replace("Use=", "") == "true";
+                // Read SSH Tunnel IP
+                txtSSHTunnelIP.Text = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(
+                        fsReader.ReadLine().Replace(" ", "").Replace("IP=", "")
+                    )
+                );
+                // Read SSH Tunnel port.
+                numUpDownSSHTunnelPort.Value = Convert.ToDecimal(
+                    fsReader.ReadLine().Replace(" ", "").Replace("Port=", "")
+                );
+                // Read SSH Tunnel username.
+                txtSSHTunnelUsername.Text = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(
+                        fsReader.ReadLine().Replace(" ", "").Replace("Username=", "")
+                    )
+                );
+                // Read SSH Tunnel password.
+                txtSSHTunnelPassword.Text = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(
+                        fsReader.ReadLine().Replace(" ", "").Replace("Password=", "")
+                    )
+                );
+            } catch {
+                MessageBox.Show("File config.ini is damaged. Only part of settings will be loaded.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (fsReader != null) fsReader.Close();
+            ConfigFile.Close();
+            FlashState();
         }
 
         private void FlashState() {
@@ -228,6 +350,30 @@ namespace MailDataReciever {
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e) {
             btnDisconnect_Click(null, null);
+
+            FileStream ConfigFile = new FileStream("config.ini", FileMode.Create, FileAccess.ReadWrite);
+            StreamWriter sw = new StreamWriter(ConfigFile);
+            sw.WriteLine("[SFTP]");
+            sw.WriteLine("IP=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(txtSFtpIP.Text)));
+            sw.WriteLine("Port=" + numUpDownSFtpPort.Value.ToString());
+            sw.WriteLine("Username=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(txtSFtpUsername.Text)));
+            sw.WriteLine("Password=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(txtSFtpPassword.Text)));
+            sw.WriteLine();
+            sw.WriteLine("[Database]");
+            sw.WriteLine("IP=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(txtDBIP.Text)));
+            sw.WriteLine("Port=" + numUpDownDBPort.Value.ToString());
+            sw.WriteLine("Username=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(txtDBUsername.Text)));
+            sw.WriteLine("Password=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(txtDBPassword.Text)));
+            sw.WriteLine();
+            sw.WriteLine("[SSH Tunnel]");
+            sw.WriteLine("Use=" + (checkBoxUseSSH.Checked ? "true" : "false"));
+            sw.WriteLine("IP=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(txtSSHTunnelIP.Text)));
+            sw.WriteLine("Port=" + numUpDownSSHTunnelPort.Value.ToString());
+            sw.WriteLine("Username=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(txtSSHTunnelUsername.Text)));
+            sw.WriteLine("Password=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(txtSSHTunnelPassword.Text)));
+            sw.Flush();
+            sw.Close();
+            ConfigFile.Close();
         }
 
         private void btnListMails_Click(object sender, EventArgs e) {

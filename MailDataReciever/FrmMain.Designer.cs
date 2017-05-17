@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.btnConnect = new System.Windows.Forms.Button();
-            this.txtMailDataServerIP = new System.Windows.Forms.TextBox();
+            this.txtSFtpIP = new System.Windows.Forms.TextBox();
             this.groupBoxMailDataServer = new System.Windows.Forms.GroupBox();
             this.numUpDownSFtpPort = new System.Windows.Forms.NumericUpDown();
             this.labelSFtpPort = new System.Windows.Forms.Label();
             this.labelSFtpPassword = new System.Windows.Forms.Label();
-            this.txtMailDataServerPassword = new System.Windows.Forms.TextBox();
-            this.txtMailDataServerUsername = new System.Windows.Forms.TextBox();
+            this.txtSFtpPassword = new System.Windows.Forms.TextBox();
+            this.txtSFtpUsername = new System.Windows.Forms.TextBox();
             this.labelSFtpUsername = new System.Windows.Forms.Label();
             this.labelSFtpIP = new System.Windows.Forms.Label();
             this.btnDisconnect = new System.Windows.Forms.Button();
@@ -83,23 +83,23 @@
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
-            // txtMailDataServerIP
+            // txtSFtpIP
             // 
-            this.txtMailDataServerIP.Location = new System.Drawing.Point(80, 18);
-            this.txtMailDataServerIP.Name = "txtMailDataServerIP";
-            this.txtMailDataServerIP.Size = new System.Drawing.Size(163, 21);
-            this.txtMailDataServerIP.TabIndex = 1;
+            this.txtSFtpIP.Location = new System.Drawing.Point(80, 18);
+            this.txtSFtpIP.Name = "txtSFtpIP";
+            this.txtSFtpIP.Size = new System.Drawing.Size(163, 21);
+            this.txtSFtpIP.TabIndex = 1;
             // 
             // groupBoxMailDataServer
             // 
             this.groupBoxMailDataServer.Controls.Add(this.numUpDownSFtpPort);
             this.groupBoxMailDataServer.Controls.Add(this.labelSFtpPort);
             this.groupBoxMailDataServer.Controls.Add(this.labelSFtpPassword);
-            this.groupBoxMailDataServer.Controls.Add(this.txtMailDataServerPassword);
-            this.groupBoxMailDataServer.Controls.Add(this.txtMailDataServerUsername);
+            this.groupBoxMailDataServer.Controls.Add(this.txtSFtpPassword);
+            this.groupBoxMailDataServer.Controls.Add(this.txtSFtpUsername);
             this.groupBoxMailDataServer.Controls.Add(this.labelSFtpUsername);
             this.groupBoxMailDataServer.Controls.Add(this.labelSFtpIP);
-            this.groupBoxMailDataServer.Controls.Add(this.txtMailDataServerIP);
+            this.groupBoxMailDataServer.Controls.Add(this.txtSFtpIP);
             this.groupBoxMailDataServer.Location = new System.Drawing.Point(12, 50);
             this.groupBoxMailDataServer.Name = "groupBoxMailDataServer";
             this.groupBoxMailDataServer.Size = new System.Drawing.Size(260, 133);
@@ -147,21 +147,21 @@
             this.labelSFtpPassword.TabIndex = 6;
             this.labelSFtpPassword.Text = "Password:";
             // 
-            // txtMailDataServerPassword
+            // txtSFtpPassword
             // 
-            this.txtMailDataServerPassword.Location = new System.Drawing.Point(80, 101);
-            this.txtMailDataServerPassword.Name = "txtMailDataServerPassword";
-            this.txtMailDataServerPassword.PasswordChar = '*';
-            this.txtMailDataServerPassword.Size = new System.Drawing.Size(163, 21);
-            this.txtMailDataServerPassword.TabIndex = 4;
+            this.txtSFtpPassword.Location = new System.Drawing.Point(80, 101);
+            this.txtSFtpPassword.Name = "txtSFtpPassword";
+            this.txtSFtpPassword.PasswordChar = '*';
+            this.txtSFtpPassword.Size = new System.Drawing.Size(163, 21);
+            this.txtSFtpPassword.TabIndex = 4;
             // 
-            // txtMailDataServerUsername
+            // txtSFtpUsername
             // 
-            this.txtMailDataServerUsername.Location = new System.Drawing.Point(80, 74);
-            this.txtMailDataServerUsername.Name = "txtMailDataServerUsername";
-            this.txtMailDataServerUsername.Size = new System.Drawing.Size(163, 21);
-            this.txtMailDataServerUsername.TabIndex = 3;
-            this.txtMailDataServerUsername.Text = "root";
+            this.txtSFtpUsername.Location = new System.Drawing.Point(80, 74);
+            this.txtSFtpUsername.Name = "txtSFtpUsername";
+            this.txtSFtpUsername.Size = new System.Drawing.Size(163, 21);
+            this.txtSFtpUsername.TabIndex = 3;
+            this.txtSFtpUsername.Text = "root";
             // 
             // labelSFtpUsername
             // 
@@ -212,14 +212,14 @@
             this.groupBoxMysqlServer.Controls.Add(this.txtDBIP);
             this.groupBoxMysqlServer.Location = new System.Drawing.Point(278, 12);
             this.groupBoxMysqlServer.Name = "groupBoxMysqlServer";
-            this.groupBoxMysqlServer.Size = new System.Drawing.Size(573, 171);
+            this.groupBoxMysqlServer.Size = new System.Drawing.Size(636, 171);
             this.groupBoxMysqlServer.TabIndex = 4;
             this.groupBoxMysqlServer.TabStop = false;
             this.groupBoxMysqlServer.Text = "MailData Database Info";
             // 
             // numUpDownSSHTunnelPort
             // 
-            this.numUpDownSSHTunnelPort.Location = new System.Drawing.Point(363, 74);
+            this.numUpDownSSHTunnelPort.Location = new System.Drawing.Point(411, 74);
             this.numUpDownSSHTunnelPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -265,7 +265,7 @@
             // labelSSHTunnelPort
             // 
             this.labelSSHTunnelPort.AutoSize = true;
-            this.labelSSHTunnelPort.Location = new System.Drawing.Point(322, 76);
+            this.labelSSHTunnelPort.Location = new System.Drawing.Point(370, 76);
             this.labelSSHTunnelPort.Name = "labelSSHTunnelPort";
             this.labelSSHTunnelPort.Size = new System.Drawing.Size(35, 12);
             this.labelSSHTunnelPort.TabIndex = 22;
@@ -274,7 +274,7 @@
             // labelSSHTunnelPassword
             // 
             this.labelSSHTunnelPassword.AutoSize = true;
-            this.labelSSHTunnelPassword.Location = new System.Drawing.Point(298, 131);
+            this.labelSSHTunnelPassword.Location = new System.Drawing.Point(346, 131);
             this.labelSSHTunnelPassword.Name = "labelSSHTunnelPassword";
             this.labelSSHTunnelPassword.Size = new System.Drawing.Size(59, 12);
             this.labelSSHTunnelPassword.TabIndex = 21;
@@ -282,7 +282,7 @@
             // 
             // txtSSHTunnelPassword
             // 
-            this.txtSSHTunnelPassword.Location = new System.Drawing.Point(363, 127);
+            this.txtSSHTunnelPassword.Location = new System.Drawing.Point(411, 127);
             this.txtSSHTunnelPassword.Name = "txtSSHTunnelPassword";
             this.txtSSHTunnelPassword.PasswordChar = '*';
             this.txtSSHTunnelPassword.Size = new System.Drawing.Size(148, 21);
@@ -291,7 +291,7 @@
             // 
             // txtSSHTunnelUsername
             // 
-            this.txtSSHTunnelUsername.Location = new System.Drawing.Point(363, 100);
+            this.txtSSHTunnelUsername.Location = new System.Drawing.Point(411, 100);
             this.txtSSHTunnelUsername.Name = "txtSSHTunnelUsername";
             this.txtSSHTunnelUsername.Size = new System.Drawing.Size(148, 21);
             this.txtSSHTunnelUsername.TabIndex = 12;
@@ -301,7 +301,7 @@
             // labelSSHTunnelUsername
             // 
             this.labelSSHTunnelUsername.AutoSize = true;
-            this.labelSSHTunnelUsername.Location = new System.Drawing.Point(298, 103);
+            this.labelSSHTunnelUsername.Location = new System.Drawing.Point(346, 103);
             this.labelSSHTunnelUsername.Name = "labelSSHTunnelUsername";
             this.labelSSHTunnelUsername.Size = new System.Drawing.Size(59, 12);
             this.labelSSHTunnelUsername.TabIndex = 18;
@@ -310,7 +310,7 @@
             // labelSSHTunnelIP
             // 
             this.labelSSHTunnelIP.AutoSize = true;
-            this.labelSSHTunnelIP.Location = new System.Drawing.Point(334, 50);
+            this.labelSSHTunnelIP.Location = new System.Drawing.Point(382, 50);
             this.labelSSHTunnelIP.Name = "labelSSHTunnelIP";
             this.labelSSHTunnelIP.Size = new System.Drawing.Size(23, 12);
             this.labelSSHTunnelIP.TabIndex = 17;
@@ -318,7 +318,7 @@
             // 
             // txtSSHTunnelIP
             // 
-            this.txtSSHTunnelIP.Location = new System.Drawing.Point(363, 46);
+            this.txtSSHTunnelIP.Location = new System.Drawing.Point(411, 46);
             this.txtSSHTunnelIP.Name = "txtSSHTunnelIP";
             this.txtSSHTunnelIP.Size = new System.Drawing.Size(148, 21);
             this.txtSSHTunnelIP.TabIndex = 10;
@@ -336,7 +336,7 @@
             // checkBoxUseSSH
             // 
             this.checkBoxUseSSH.AutoSize = true;
-            this.checkBoxUseSSH.Location = new System.Drawing.Point(300, 24);
+            this.checkBoxUseSSH.Location = new System.Drawing.Point(348, 24);
             this.checkBoxUseSSH.Name = "checkBoxUseSSH";
             this.checkBoxUseSSH.Size = new System.Drawing.Size(108, 16);
             this.checkBoxUseSSH.TabIndex = 9;
@@ -399,9 +399,9 @@
             this.groupBoxDownload.Controls.Add(this.btnSelectFolder);
             this.groupBoxDownload.Controls.Add(this.txtFilePath);
             this.groupBoxDownload.Controls.Add(this.btnDownloadFile);
-            this.groupBoxDownload.Location = new System.Drawing.Point(591, 288);
+            this.groupBoxDownload.Location = new System.Drawing.Point(650, 288);
             this.groupBoxDownload.Name = "groupBoxDownload";
-            this.groupBoxDownload.Size = new System.Drawing.Size(260, 91);
+            this.groupBoxDownload.Size = new System.Drawing.Size(264, 91);
             this.groupBoxDownload.TabIndex = 6;
             this.groupBoxDownload.TabStop = false;
             this.groupBoxDownload.Text = "Save File To";
@@ -455,9 +455,9 @@
             // 
             this.groupBoxMailAddress.Controls.Add(this.txtMailAddress);
             this.groupBoxMailAddress.Controls.Add(this.btnListMails);
-            this.groupBoxMailAddress.Location = new System.Drawing.Point(591, 189);
+            this.groupBoxMailAddress.Location = new System.Drawing.Point(650, 189);
             this.groupBoxMailAddress.Name = "groupBoxMailAddress";
-            this.groupBoxMailAddress.Size = new System.Drawing.Size(260, 93);
+            this.groupBoxMailAddress.Size = new System.Drawing.Size(264, 93);
             this.groupBoxMailAddress.TabIndex = 11;
             this.groupBoxMailAddress.TabStop = false;
             this.groupBoxMailAddress.Text = "Mail Address";
@@ -473,7 +473,7 @@
             this.listViewMails.LabelWrap = false;
             this.listViewMails.Location = new System.Drawing.Point(12, 189);
             this.listViewMails.Name = "listViewMails";
-            this.listViewMails.Size = new System.Drawing.Size(573, 375);
+            this.listViewMails.Size = new System.Drawing.Size(632, 499);
             this.listViewMails.TabIndex = 13;
             this.listViewMails.UseCompatibleStateImageBehavior = false;
             this.listViewMails.View = System.Windows.Forms.View.Details;
@@ -495,7 +495,7 @@
             this.AcceptButton = this.btnConnect;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 576);
+            this.ClientSize = new System.Drawing.Size(926, 700);
             this.Controls.Add(this.listViewMails);
             this.Controls.Add(this.groupBoxMailAddress);
             this.Controls.Add(this.groupBoxDownload);
@@ -504,6 +504,7 @@
             this.Controls.Add(this.groupBoxMailDataServer);
             this.Controls.Add(this.btnConnect);
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MailData Receiver";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
@@ -525,12 +526,12 @@
         #endregion
 
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.TextBox txtMailDataServerIP;
+        private System.Windows.Forms.TextBox txtSFtpIP;
         private System.Windows.Forms.GroupBox groupBoxMailDataServer;
         private System.Windows.Forms.Label labelSFtpIP;
         private System.Windows.Forms.Label labelSFtpPassword;
-        private System.Windows.Forms.TextBox txtMailDataServerPassword;
-        private System.Windows.Forms.TextBox txtMailDataServerUsername;
+        private System.Windows.Forms.TextBox txtSFtpPassword;
+        private System.Windows.Forms.TextBox txtSFtpUsername;
         private System.Windows.Forms.Label labelSFtpUsername;
         private System.Windows.Forms.Button btnDisconnect;
         private System.Windows.Forms.GroupBox groupBoxMysqlServer;
