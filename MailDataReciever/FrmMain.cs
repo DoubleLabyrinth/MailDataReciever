@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Renci.SshNet;
 using System.Text.RegularExpressions;
@@ -32,7 +27,7 @@ namespace MailDataReciever {
             try {
                 iSFtp.Connect();
             } catch(Exception ex) {
-                MessageBox.Show(ex.ToString(), "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 iSFtp.Dispose();
                 iSFtp = null;
@@ -48,7 +43,7 @@ namespace MailDataReciever {
                 try {
                     iSSHClient.Connect();
                 } catch(Exception ex) {
-                    MessageBox.Show(ex.ToString(), "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     iSSHClient.Dispose();
                     iSSHClient = null;
@@ -68,7 +63,7 @@ namespace MailDataReciever {
                 try {
                     iSSHTunnel.Start();
                 } catch(Exception ex) {
-                    MessageBox.Show(ex.ToString(), "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     iSSHClient.RemoveForwardedPort(iSSHTunnel);
 
@@ -99,7 +94,7 @@ namespace MailDataReciever {
             try {
                 MysqlConn.Open();
             } catch(Exception ex) {
-                MessageBox.Show(ex.ToString(), "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 MysqlConn.Dispose();
                 MysqlConn = null;
