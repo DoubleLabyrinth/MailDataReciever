@@ -1,5 +1,5 @@
 # MailDataReciever
-----------------------------------------------
+
 ## 1. What is __MailData__
 * __MailData__ is a system used to achieve mails. This system is designed by [Beijing 朗阁 Information Technology Co. Ltd.](http://http://www.maildata.cn/) whose original name is __Beijing 易信源 Information Technology Co. Ltd.__
 
