@@ -23,6 +23,7 @@
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.btnConnect = new System.Windows.Forms.Button();
             this.txtSFtpIP = new System.Windows.Forms.TextBox();
             this.groupBoxMailDataServer = new System.Windows.Forms.GroupBox();
@@ -503,6 +504,7 @@
             this.Controls.Add(this.btnDisconnect);
             this.Controls.Add(this.groupBoxMailDataServer);
             this.Controls.Add(this.btnConnect);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MailData Receiver";
