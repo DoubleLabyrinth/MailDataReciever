@@ -381,7 +381,14 @@ Password=
 
             string tmp = Regex.Replace(txtMailAddress.Text, @"\W", "_");
             MySqlCommand sqlCmd = new MySqlCommand("select id, emlpath, title from mailcenter.mc_mails_p_" + tmp + " order by id;", MysqlConn);
-            MySqlDataReader reader = sqlCmd.ExecuteReader();
+            MySqlDataReader reader;
+
+            try {
+                reader = sqlCmd.ExecuteReader();
+            } catch(Exception ex) {
+                MessageBox.Show(ex.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             listViewMails.Items.Clear();
             string[] element = new string[3];
