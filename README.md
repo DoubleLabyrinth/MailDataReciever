@@ -1,7 +1,7 @@
 # MailDataReciever
 
 ## 1. What is __MailData__
-* __MailData__ is a system used to achieve mails. This system is designed by [Beijing 朗阁 Information Technology Co. Ltd.](http://http://www.maildata.cn/) whose original name is __Beijing 易信源 Information Technology Co. Ltd.__
+* __MailData__ is a system used to achieve mails. This system is designed by [Beijing 朗阁 Information Technology Co. Ltd.](http://www.maildata.cn/) whose original name is __Beijing 易信源 Information Technology Co. Ltd.__
 
 * __MailData__ can achieve any specified mails by monitoring network gateways. If a mail passes through the monitored network gateway, no matter it passes in or passes out, __MailData__ will make a copy of the mail and save the copy to a specified host with a name that looks like a UUID string. Of course, to manage those achieved mails conveniently, __MailData__ has a MySQL database to record the information of any achieved mails.
 
